@@ -1,0 +1,77 @@
+### Create a new experience
+POST http://localhost:8080/api/experiences
+Content-Type: application/json
+
+{
+  "title": "City Food Tour",
+  "description": "Explore local cuisine with a guide.",
+  "location": "New York",
+  "date": "2025-07-01T10:00:00",
+  "price": 49.99,
+  "totalTickets": 50,
+  "vendorId": "vendor_123",
+  "ticketsSold": 0
+}
+
+### Get all experiences
+GET http://localhost:8080/api/experiences
+
+### Create a new user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "name": "Alice",
+  "email": "alice@example.com",
+  "creditBalance": 200.0
+}
+
+### Book 2 tickets for an experience
+POST http://localhost:8080/api/experiences/682a4ba960b03138573854c4/book?userId=682a4f1060b03138573854cb&tickets=2
+
+### Create a vendor
+POST http://localhost:8080/api/vendors
+Content-Type: application/json
+
+{
+  "name": "Wanderlust Tours",
+  "email": "contact@wanderlust.com"
+}
+
+### Get all vendors
+GET http://localhost:8080/api/vendors
+
+### Create an experience by vendor
+POST http://localhost:8080/api/experiences/vendor/682a520760b03138573854d9
+Content-Type: application/json
+
+{
+  "title": "City Food Tour",
+  "description": "Explore local cuisine with a guide.",
+  "location": "New York",
+  "date": "2025-07-01T10:00:00",
+  "price": 49.99,
+  "totalTickets": 50,
+  "vendorId": "vendor_123",
+  "ticketsSold": 0
+}
+
+### Register a new user
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "secret123",
+  "role": "USER"
+}
+
+### Login
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "secret123"
+}
+
