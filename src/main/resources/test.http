@@ -1,77 +1,122 @@
-### Create a new experience
-POST http://localhost:8080/api/experiences
-Content-Type: application/json
+### 1. User Management ###
 
-{
-  "title": "City Food Tour",
-  "description": "Explore local cuisine with a guide.",
-  "location": "New York",
-  "date": "2025-07-01T10:00:00",
-  "price": 49.99,
-  "totalTickets": 50,
-  "vendorId": "vendor_123",
-  "ticketsSold": 0
-}
-
-### Get all experiences
-GET http://localhost:8080/api/experiences
-
-### Create a new user
+### Create a User - John Doe
 POST http://localhost:8080/api/users
 Content-Type: application/json
 
 {
-  "name": "Alice",
-  "email": "alice@example.com",
-  "creditBalance": 200.0
+  "id": "u1",
+  "name": "John Doe",
+  "email": "john@example.com",
+  "phoneNumber": "1234567890",
+  "creditBalance": 0
 }
 
-### Book 2 tickets for an experience
-POST http://localhost:8080/api/experiences/682a4ba960b03138573854c4/book?userId=682a4f1060b03138573854cb&tickets=2
+### Create a User - Jane Smith
+POST http://localhost:8080/api/users
+Content-Type: application/json
 
-### Create a vendor
+{
+  "id": "u2",
+  "name": "Jane Smith",
+  "email": "jane@example.com",
+  "phoneNumber": "0987654321",
+  "creditBalance": 0
+}
+
+### Get All Users
+GET http://localhost:8080/api/users
+
+### Get User by ID
+GET http://localhost:8080/api/users/u1
+
+
+### 2. Vendor Management ###
+
+### Create a Vendor - Adventure Tours
 POST http://localhost:8080/api/vendors
 Content-Type: application/json
 
 {
-  "name": "Wanderlust Tours",
-  "email": "contact@wanderlust.com"
+  "id": "v1",
+  "name": "Adventure Tours",
+  "email": "info@adventuretours.com",
+  "phoneNumber": "9876543210",
+  "description": "We provide exciting adventure tours"
 }
 
-### Get all vendors
-GET http://localhost:8080/api/vendors
-
-### Create an experience by vendor
-POST http://localhost:8080/api/experiences/vendor/682a520760b03138573854d9
+### Create a Vendor - City Explorers
+POST http://localhost:8080/api/vendors
 Content-Type: application/json
 
 {
-  "title": "City Food Tour",
-  "description": "Explore local cuisine with a guide.",
-  "location": "New York",
-  "date": "2025-07-01T10:00:00",
-  "price": 49.99,
-  "totalTickets": 50,
-  "vendorId": "vendor_123",
+  "id": "v2",
+  "name": "City Explorers",
+  "email": "contact@cityexplorers.com",
+  "phoneNumber": "5556667777",
+  "description": "Guided city tours"
+}
+
+### Get All Vendors
+GET http://localhost:8080/api/vendors
+
+### Get Vendor by ID
+GET http://localhost:8080/api/vendors/v1
+
+
+### 3. Experience Management ###
+
+### Create an Experience directly
+POST http://localhost:8080/api/experiences
+Content-Type: application/json
+
+{
+  "id": "e1",
+  "name": "Mountain Trekking",
+  "description": "Exciting trek through mountain trails",
+  "price": 99.99,
+  "duration": "8 hours",
+  "location": "Himalayan Foothills",
+  "availableSlots": 20,
+  "vendorId": "v1",
+  "title": "",
+  "date": "",
+  "totalTickets": 0,
   "ticketsSold": 0
 }
 
-### Register a new user
-POST http://localhost:8080/api/auth/register
+### Create Experience by Vendor
+POST http://localhost:8080/api/experiences/vendor/v1
 Content-Type: application/json
 
 {
-  "email": "user@example.com",
-  "password": "secret123",
-  "role": "USER"
+  "id": "e2",
+  "name": "City Walking Tour",
+  "description": "Discover hidden gems in the city",
+  "price": 49.99,
+  "duration": "3 hours",
+  "location": "City Center",
+  "availableSlots": 15,
+  "title": "",
+  "date": "",
+  "totalTickets": 0,
+  "ticketsSold": 0,
+  "vendorId": ""
 }
 
-### Login
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
+### Get All Experiences
+GET http://localhost:8080/api/experiences
 
-{
-  "email": "user@example.com",
-  "password": "secret123"
-}
+### 4. Booking Flow ###
 
+### Book an Experience - 2 tickets for Mountain Trekking
+POST http://localhost:8080/api/experiences/e1/book?userId=u1&tickets=2
+
+### Check Experience after booking (verify available slots decreased)
+GET http://localhost:8080/api/experiences
+
+### Book another Experience - 3 tickets for City Walking Tour
+POST http://localhost:8080/api/experiences/e2/book?userId=u2&tickets=3
+
+### Final check of all experiences
+GET http://localhost:8080/api/experiences
