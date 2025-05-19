@@ -9,7 +9,7 @@ Content-Type: application/json
   "name": "John Doe",
   "email": "john@example.com",
   "phoneNumber": "1234567890",
-  "creditBalance": 0
+  "creditBalance": 1000
 }
 
 ### Create a User - Jane Smith
@@ -21,7 +21,7 @@ Content-Type: application/json
   "name": "Jane Smith",
   "email": "jane@example.com",
   "phoneNumber": "0987654321",
-  "creditBalance": 0
+  "creditBalance": 1000
 }
 
 ### Get All Users
@@ -80,9 +80,9 @@ Content-Type: application/json
   "availableSlots": 20,
   "vendorId": "v1",
   "title": "",
-  "date": "",
-  "totalTickets": 0,
-  "ticketsSold": 0
+  "totalTickets": 20,
+  "ticketsSold": 0,
+  "date": "2025-05-19T18:05:00"
 }
 
 ### Create Experience by Vendor
@@ -98,8 +98,8 @@ Content-Type: application/json
   "location": "City Center",
   "availableSlots": 15,
   "title": "",
-  "date": "",
-  "totalTickets": 0,
+  "date": "2025-05-19T18:05:00",
+  "totalTickets": 20,
   "ticketsSold": 0,
   "vendorId": ""
 }
