@@ -2,6 +2,9 @@
 
 This API provides endpoints for managing users, vendors, and experiences for the Ghumi Ghumi application.
 
+> **_NOTE:_**  Please note that currently, the API does not support authentication. All endpoints are publicly accessible.
+
+
 ## API Testing Flow
 
 Follow this guide to test all endpoints in a logical sequence. Each section contains the necessary endpoints, request formats, and expected responses.
